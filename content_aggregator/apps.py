@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class ContentAggregatorConfig(AppConfig):
-    name = 'content_aggregator'
+    name = "content_aggregator"
