@@ -15,10 +15,10 @@ class Entry(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     pub_date = models.DateTimeField()
-    link = models.URLField()
+    link = models.URLField(unique=True)
     is_published = models.BooleanField(default=False)
     is_featured = models.BooleanField(default=False)
-    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
+    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, blank=True)
 
     def __str__(self) -> str:
         return f"{self.title}"
