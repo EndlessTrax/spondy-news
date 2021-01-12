@@ -1,7 +1,11 @@
 from django.db import models
 
 
-CATEGORY_CHOICES = [("ARTICLE", "Article"), ("RESEARCH", "Research"), ("EVENT", "Event")]
+CATEGORY_CHOICES = [
+    ("ARTICLE", "Article"),
+    ("RESEARCH", "Research"),
+    ("EVENT", "Event"),
+]
 
 
 class Entry(models.Model):
