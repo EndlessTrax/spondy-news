@@ -1,7 +1,7 @@
 from django.db import models
 
 
-CATEGORY_CHOICES = [("NEWS", "News"), ("RESEARCH", "Research"), ("EVENTS", "Events")]
+CATEGORY_CHOICES = [("ARTICLE", "Article"), ("RESEARCH", "Research"), ("EVENT", "Event")]
 
 
 class Entry(models.Model):
@@ -17,4 +17,4 @@ class Entry(models.Model):
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
 
     def __str__(self) -> str:
-        return f"{self.title} - Published on {self.pub_date}"
+        return f"{self.title}"
