@@ -15,7 +15,7 @@ class Entry(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     pub_date = models.DateTimeField()
-    link = models.URLField(unique=True)
+    link = models.URLField(unique=True, max_length=300)
     is_published = models.BooleanField(default=False)
     is_featured = models.BooleanField(default=False)
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, blank=True)
