@@ -14,7 +14,7 @@ class HomePageView(ListView):
             is_published=True, category="ARTICLE"
         ).order_by("-pub_date")
 
-        context["research"] = Entry.objects.filter(
+        context["researches"] = Entry.objects.filter(
             is_published=True, category="RESEARCH"
         ).order_by("-pub_date")
         
