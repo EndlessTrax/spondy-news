@@ -10,4 +10,11 @@
 - Add contribution guidlines
 - Add Github sponsorship
 - Change Time zone in settings
-- 
+- Add view/context tests
+- Add repo link to the footer.
+- Security (XSS etc)
+- Check all links (esp. social)
+- Add robots.txt + security.txt
+- Add sitemap.xml
+- Clean up and Refactor 
+- Code Comments and docstrings
