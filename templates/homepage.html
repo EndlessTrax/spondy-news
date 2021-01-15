@@ -1,14 +1,97 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>It works!</h1>
-  {% for entry in entries %}
-    <p>{{entry.title}}</p>
-  {% endfor %}
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spondy News</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  </head>
+  <body class="d-flex flex-column">
+    <nav class="container-fluid">
+      <div class="col-12">
+        <h1 class="text-center">Spondy News</h1>
+      </div>
+    </nav>
+
+    <main class="container-fluid flex-grow-1">
+      <div class="row">
+        <div class="col-md-6 offset-md-2">
+          <section>
+            <header class="section-header">
+              <h2>Articles</h2>
+            </header>
+
+            {% for article in articles %} {% if article.category == "ARTICLE" %}
+            <article>
+              <p class="mb-0">
+                <small class="text-muted">{{ article.pub_date|date:'M-d' }}</small> –
+                <a href="{{ article.link }}">{{ article.title }}</a>
+              </p>
+            </article>
+            {% endif %} {% endfor %}
+          </section>
+
+          <section class="mt-4">
+            <header class="section-header">
+              <h2>Research</h2>
+            </header>
+
+            {% for research in researches %} {% if research.category == "RESEARCH" %}
+            <article>
+              <p class="mb-0">
+                <small class="text-muted">{{ research.pub_date|date:'M-d' }}</small> –
+                <a href="{{ research.link }}">{{ research.title }}</a>
+              </p>
+            </article>
+            {% endif %} {% endfor %}
+          </section>
+
+          <section class="mt-4">
+            <header class="section-header">
+              <h2>Events</h2>
+            </header>
+
+            {% for event in events %} {% if event.category == "EVENT" %}
+            <article>
+              <p class="mb-0">
+                <small class="text-muted">{{ event.pub_date|date:'M-d' }}</small> –
+                <a href="{{ event.link }}">{{ event.title }}</a>
+              </p>
+            </article>
+            {% endif %} {% endfor %}
+          </section>
+        </div>
+
+        <aside class="col-md-2">
+          <p>This is the sidebar</p>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="container-fluid">
+      <div class="row">
+        <div class="col-md-5 offset-md-1">
+          <p>
+            Spondy News is an open-source project created by
+            <a href="https://endlesstrax.com" target="_blank" rel="noopener" title="Ricky's Website"
+              >Ricky White</a
+            >. The source code can be found on GitHub.
+          </p>
+        </div>
+        <div class="col-md-5">
+          <p class="text-end">Something Something</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> -->
+  </body>
 </html>
