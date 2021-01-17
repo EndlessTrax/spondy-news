@@ -12,14 +12,14 @@ class HomePageView(ListView):
         
         context["articles"] = Entry.objects.filter(
             is_published=True, category="ARTICLE"
-        ).order_by("-pub_date")
+        ).order_by("-pub_date")[:25]
 
         context["researches"] = Entry.objects.filter(
             is_published=True, category="RESEARCH"
-        ).order_by("-pub_date")
+        ).order_by("-pub_date")[:25]
         
         context["events"] = Entry.objects.filter(
-            is_published=True, category="EVENTS"
+            is_published=True, category="EVENT"
         ).order_by("-pub_date")
         
         return context
