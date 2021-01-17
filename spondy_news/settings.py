@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     # Third Party
     "django_apscheduler",
     # My Apps
-    "content_aggregator.apps.ContentAggregatorConfig",
+    "aggregator.apps.ContentAggregatorConfig",
 ]
 
 MIDDLEWARE = [

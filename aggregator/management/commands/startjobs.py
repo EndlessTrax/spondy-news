@@ -13,7 +13,7 @@ from django_apscheduler.models import DjangoJobExecution
 # Django
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from content_aggregator.models import Entry
+from aggregator.models import Entry
 
 
 logger = logging.getLogger(__name__)
@@ -47,7 +47,7 @@ def parse_google_alert_feed(url):
                     description=remove_html_elements(item.content[0]["value"]),
                     pub_date=parser.parse(item.updated),
                     link=item.link,
-                    category='ARTICLE'
+                    category="ARTICLE",
                 )
                 entry.save()
     except:
