@@ -54,24 +54,10 @@
             {% endif %} {% endfor %}
           </section>
 
-          <section class="mt-4">
-            <header class="section-header">
-              <h2>Events</h2>
-            </header>
-
-            {% for event in events %} {% if event.category == "EVENT" %}
-            <article>
-              <p class="mb-0">
-                <small class="text-muted">{{ event.pub_date|date:'M-d' }}</small> –
-                <a href="{{ event.link }}">{{ event.title }}</a>
-              </p>
-            </article>
-            {% endif %} {% endfor %}
-          </section>
         </div>
 
         <aside class="col-md-2">
-          <div class="card border-secondary mb-3">
+          <section class="card border-secondary">
             <div class="card-body text-secondary">
               <h5 class="card-title text-center">Say Thank You</h5>
               <p class="card-text">
@@ -83,7 +69,24 @@
                 <img class="img-fluid" src="{% static 'imgs/ko-fi.png' %}" alt="Buy me a coffee?" />
               </a>
             </div>
-          </div>
+          </section>
+
+          <section class="mt-4">
+            <header class="section-header">
+              <h2>Events</h2>
+            </header>
+
+            {% for event in events %} {% if event.category == "EVENT" %}
+
+            <div class="card border-secondary">
+              <div class="card-body text-secondary">
+                <h5 class="card-title text-center"><a href="{{ event.link }}">{{ event.title }}</a></h5>
+                <p class="card-text">{{ event.description }}</p>
+              </div>
+            </div>
+            {% endif %} {% endfor %}
+          </section>
+          
         </aside>
       </div>
     </main>
