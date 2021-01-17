@@ -18,6 +18,5 @@
 - Add sitemap.xml (plus add path to robots.txt)
 - Clean up and Refactor 
 - Code Comments and docstrings
-- Rename main app to spondy news
 - Add Open Graph Meta
 - Get Logo
