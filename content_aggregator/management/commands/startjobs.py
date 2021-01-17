@@ -47,6 +47,7 @@ def parse_google_alert_feed(url):
                     description=remove_html_elements(item.content[0]["value"]),
                     pub_date=parser.parse(item.updated),
                     link=item.link,
+                    category='ARTICLE'
                 )
                 entry.save()
     except:
