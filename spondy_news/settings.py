@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import environ
+import django_heroku
 
 # Load .env file
 env = environ.Env()
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "spondy_news.urls"
@@ -130,6 +132,12 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
 # Logging
 
 LOGGING = {
@@ -145,3 +153,8 @@ LOGGING = {
         "level": "INFO",
     },
 }
+
+
+# Activate Django-Heroku
+
+django_heroku.settings(locals())
