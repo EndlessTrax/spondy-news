@@ -136,7 +136,7 @@ STATICFILES_DIRS = [
 # https://warehouse.python.org/project/whitenoise/
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Logging
 
@@ -157,10 +157,10 @@ LOGGING = {
 
 # Security
 
-# if not DEBUG:
-#     CSRF_COOKIE_SECURE = True
-#     SESSION_COOKIE_SECUR = True
-#     SECURE_SSL_REDIRECT = True
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECUR = True
+    SECURE_SSL_REDIRECT = True
 
 
 # Activate Django-Heroku
