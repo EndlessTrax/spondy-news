@@ -155,6 +155,14 @@ LOGGING = {
 }
 
 
+# Security
+
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECUR = True
+    SECURE_SSL_REDIRECT = True
+
+
 # Activate Django-Heroku
 
 django_heroku.settings(locals())
