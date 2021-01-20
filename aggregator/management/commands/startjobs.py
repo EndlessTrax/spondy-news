@@ -37,12 +37,18 @@ def delete_old_job_executions(max_age=604_800):
 
 
 def remove_html_elements(string: str) -> str:
+    """Removes any html elements and attributes from any string passed"""
     regex = re.compile("<.*?>")
     clean_text = re.sub(regex, "", string)
     return clean_text
 
 
-def parse_google_alert_feed(url):
+def parse_google_alert_feed(url: str) -> None:
+    """Parsing function for all Google Alert RSS feeds.
+
+    All entries gathered from these feeds are aytomatically give the ARTICLE
+    category.
+    """
     feed = feedparser.parse(url)
     try:
         for item in feed.entries:
@@ -59,7 +65,12 @@ def parse_google_alert_feed(url):
         logger.warn("No items in the Feed")
 
 
-def parse_pubmed_feed(url):
+def parse_pubmed_feed(url: str) -> None:
+    """Parsing function for all PubMed RSS feeds.
+
+    All entires gathered from these feeds are aytomatically give the RESEARCH
+    category.
+    """
     feed = feedparser.parse(url)
     try:
         for item in feed.entries:
@@ -76,32 +87,38 @@ def parse_pubmed_feed(url):
         logger.warn("No items in the Feed")
 
 
-def axspa_feed():
+def axspa_feed() -> None:
+    """Function to be passed to a Django-APScheduler job"""
     logger.info("Parsing axspa feed...")
     parse_google_alert_feed(GOOGLE_ALERT_FEEDS["axspa"])
 
 
-def spondylitis_feed():
+def spondylitis_feed() -> None:
+    """Function to be passed to a Django-APScheduler job"""
     logger.info("Parsing spondylitis feed...")
     parse_google_alert_feed(GOOGLE_ALERT_FEEDS["spondylitis"])
 
 
-def spondyloarthritis_feed():
+def spondyloarthritis_feed() -> None:
+    """Function to be passed to a Django-APScheduler job"""
     logger.info("Parsing spondyloarthritis feed...")
     parse_google_alert_feed(GOOGLE_ALERT_FEEDS["spondyloarthritis"])
 
 
-def spondyloarthropathy_feed():
+def spondyloarthropathy_feed() -> None:
+    """Function to be passed to a Django-APScheduler job"""
     logger.info("Parsing spondyloarthropathy feed...")
     parse_google_alert_feed(GOOGLE_ALERT_FEEDS["spondyloarthropathy"])
 
 
-def research_axspa_feed():
+def research_axspa_feed() -> None:
+    """Function to be passed to a Django-APScheduler job"""
     logger.info("Parsing axial spondyloarthritis PUBMED feed...")
     parse_pubmed_feed(PUBMED_FEEDS["axial spondyloarthritis"])
 
 
-def research_as_feed():
+def research_as_feed() -> None:
+    """Function to be passed to a Django-APScheduler job"""
     logger.info("Parsing ankylosing spondylitis PUBMED feed...")
     parse_pubmed_feed(PUBMED_FEEDS["ankylosing spondylitis"])
 
