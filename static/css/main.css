@@ -1,4 +1,12 @@
+/*
+  Main CSS file for Spondy News
+*/
+
+/* GLOBALS */
+/* ======= */
+
 :root {
+  /* Brand colors */
   --off-white: #f8f8f8;
   --brand-blue: #00a6ed;
   --brand-red: #c3423f;
@@ -13,6 +21,9 @@ body {
   color: var(--brand-black);
 }
 
+/* TYPOGRAPHY */
+/* ========== */
+
 a {
   text-decoration: none;
   color: var(--brand-black);
@@ -24,12 +35,34 @@ a:focus {
   color: var(--brand-red);
 }
 
+/* IMAGES / LOGOS */
+/* ============== */
+
+
 .brand-logo {
   max-height: 250px;
 }
 
+.social-icon {
+  height: 2em;
+  width: auto;
+}
+
+.social-item {
+  color: #ddd;
+  line-height: 0;
+  margin: 0 4px;
+}
+
+.social-item:hover,
+.social-item:focus {
+  color: var(--brand-red);
+}
+
+/* SECTIONS */
+/* ======== */
+
 .section-header {
-  /* background-color: #00A6ED; */
   background-image: linear-gradient(
     to right,
     rgba(0, 166, 237, 0),
@@ -60,20 +93,4 @@ footer a {
 footer a:hover,
 footer a:focus {
   text-decoration: none;
-}
-
-.social-icon {
-  height: 2em;
-  width: auto;
-}
-
-.social-item {
-  color: #ddd;
-  line-height: 0;
-  margin: 0 4px;
-}
-
-.social-item:hover,
-.social-item:focus {
-  color: var(--brand-red);
 }
