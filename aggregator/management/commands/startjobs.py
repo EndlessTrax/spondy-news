@@ -19,10 +19,10 @@ from aggregator.models import Entry
 logger = logging.getLogger(__name__)
 
 GOOGLE_ALERT_FEEDS = {
-    "axspa": "https://www.google.com/alerts/feeds/12301481115898191089/5318901876884769878",
-    "spondylitis": "https://www.google.com/alerts/feeds/12301481115898191089/134735491328814164",
-    "spondyloarthritis": "https://www.google.com/alerts/feeds/12301481115898191089/7707450025187624950",
-    "spondyloarthropathy": "https://www.google.com/alerts/feeds/12301481115898191089/12414979335294108273",
+    "axspa": "https://www.google.com/alerts/feeds/12301481115898191089/13630488004246171818",
+    "spondylitis": "https://www.google.com/alerts/feeds/12301481115898191089/5579286489481723714",
+    "spondyloarthritis": "https://www.google.com/alerts/feeds/12301481115898191089/5989929665899114034",
+    "spondyloarthropathy": "https://www.google.com/alerts/feeds/12301481115898191089/3186404085116501193",
 }
 
 PUBMED_FEEDS = {
