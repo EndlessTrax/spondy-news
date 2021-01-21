@@ -74,7 +74,10 @@ def parse_pubmed_feed(url: str) -> None:
     feed = feedparser.parse(url)
     try:
         for item in feed.entries:
-            if not Entry.objects.filter(link=item.link).exists():
+            # Pubmed uses query strings in its RSS feeds which leads to
+            # multiple duplicates when items appear on more than one feed.
+            # Therefore, pubmed feeds we use the title as the unique identifier
+            if not Entry.objects.filter(link=item.title).exists():
                 entry = Entry(
                     title=remove_html_elements(item.title),
                     description=remove_html_elements(item.description),
