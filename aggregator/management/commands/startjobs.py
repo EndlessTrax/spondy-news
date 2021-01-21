@@ -77,7 +77,7 @@ def parse_pubmed_feed(url: str) -> None:
             # Pubmed uses query strings in its RSS feeds which leads to
             # multiple duplicates when items appear on more than one feed.
             # Therefore, pubmed feeds we use the title as the unique identifier
-            if not Entry.objects.filter(link=item.title).exists():
+            if not Entry.objects.filter(title=item.title).exists():
                 entry = Entry(
                     title=remove_html_elements(item.title),
                     description=remove_html_elements(item.description),
