@@ -133,7 +133,8 @@ class Command(BaseCommand):
         scheduler.add_job(
             axspa_feed,
             trigger="interval",
-            hours=6,
+            hours=12,
+            minutes=30,
             id="Keyword: axspa",
             max_instances=1,
             replace_existing=True,
@@ -143,7 +144,7 @@ class Command(BaseCommand):
         scheduler.add_job(
             spondylitis_feed,
             trigger="interval",
-            hours=2,
+            hours=12,
             id="Keyword: spondylitis",
             max_instances=1,
             replace_existing=True,
@@ -153,7 +154,7 @@ class Command(BaseCommand):
         scheduler.add_job(
             spondyloarthritis_feed,
             trigger="interval",
-            hours=2,
+            hours=12,
             minutes=10,
             id="Keyword: spondyloarthritis",
             max_instances=1,
@@ -164,7 +165,7 @@ class Command(BaseCommand):
         scheduler.add_job(
             spondyloarthropathy_feed,
             trigger="interval",
-            hours=2,
+            hours=12,
             minutes=20,
             id="Keyword: spondyloarthropathy",
             max_instances=1,
@@ -176,7 +177,6 @@ class Command(BaseCommand):
             research_axspa_feed,
             trigger="interval",
             hours=6,
-            minutes=15,
             id="Research: AxSpa",
             max_instances=1,
             replace_existing=True,
