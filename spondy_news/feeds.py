@@ -20,6 +20,3 @@ class LatestEntriesFeed(Feed):
 
     def item_link(self, item):
         return item.link
-
-    def item_guid(self, obj):
-        return str(uuid.uuid4())
