@@ -10,7 +10,7 @@ class LatestEntriesFeed(Feed):
     description = "Published entries on Spondy News"
 
     def items(self):
-        return Entry.objects.filter(is_published=True).order_by("-pub_date")[:50]
+        return Entry.objects.filter(is_published=True).order_by("-pub_date")[:20]
 
     def item_title(self, item):
         return item.title
