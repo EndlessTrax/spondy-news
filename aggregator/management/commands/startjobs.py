@@ -30,6 +30,8 @@ PUBMED_FEEDS = {
     "ankylosing spondylitis": "https://pubmed.ncbi.nlm.nih.gov/rss/search/1pabLar0q26GwV21NSLZ__LYXTO1Ur5WgUsuRUtJ8aJnHsugMd/?limit=20&utm_campaign=pubmed-2&fc=20210117223855",
 }
 
+AS_NEWS_DOTCOM_FEED = "https://ankylosingspondylitisnews.com/feed/"
+
 
 def delete_old_job_executions(max_age=604_800):
     """This job deletes all apscheduler job executions older than `max_age` from the database."""
@@ -126,6 +128,12 @@ def research_as_feed() -> None:
     parse_pubmed_feed(PUBMED_FEEDS["ankylosing spondylitis"])
 
 
+def as_news_dotcom_feed() -> None:
+    """Function to be passed to a Django-APScheduler job"""
+    logger.info("Parsing AnkylosingSpondylitisNews.com feed...")
+    parse_pubmed_feed(AS_NEWS_DOTCOM_FEED)
+
+
 class Command(BaseCommand):
     help = "Runs apscheduler."
 
@@ -196,6 +204,16 @@ class Command(BaseCommand):
             replace_existing=True,
         )
         logger.info("Added job: research_as_feed")
+
+        scheduler.add_job(
+            as_news_dotcom_feed,
+            trigger="interval",
+            hours=6,
+            id="AS News dotcom feed",
+            max_instances=1,
+            replace_existing=True,
+        )
+        logger.info("Added job: as_news_dotcom_feed")
 
         scheduler.add_job(
             delete_old_job_executions,
