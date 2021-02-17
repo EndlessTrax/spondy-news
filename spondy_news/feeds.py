@@ -1,8 +1,6 @@
 from django.contrib.syndication.views import Feed
 from aggregator.models import Entry
 
-import uuid
-
 
 class LatestEntriesFeed(Feed):
     title = "Spondy News Feed"
