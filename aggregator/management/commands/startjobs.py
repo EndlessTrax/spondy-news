@@ -1,6 +1,7 @@
 # Standard Lib
 import re
 import logging
+from datetime import timedelta
 
 # Third Party
 import feedparser
@@ -13,6 +14,9 @@ from django_apscheduler.models import DjangoJobExecution
 # Django
 from django.conf import settings
 from django.core.management.base import BaseCommand
+from django.utils import timezone
+
+# Apps
 from aggregator.models import Entry
 
 
@@ -90,6 +94,20 @@ def parse_pubmed_feed(url: str) -> None:
                 entry.save()
     except:
         logger.warn("No items in the Feed")
+
+
+def delete_rejected_entries() -> None:
+    """Deletes old entries that were not marked is_published and used"""
+    start_range = timezone.now() - timedelta(days=365)
+    end_range = timezone.now() - timedelta(days=14)
+    to_be_deleted = Entry.objects.filter(is_published=False, pub_date__range=[start_range, end_range])
+
+    for entry in to_be_deleted:
+        try:
+            entry.delete()
+            logger.info(f"Deleted entry: {entry.title}")
+        except:
+            logger.info(f"Unable to delete entry: {entry.title}")
 
 
 def axspa_feed() -> None:
@@ -218,11 +236,20 @@ class Command(BaseCommand):
         scheduler.add_job(
             delete_old_job_executions,
             trigger=CronTrigger(day_of_week="mon", hour="00", minute="00"),
-            id="delete_old_job_executions",
+            id="delete old job executions",
             max_instances=1,
             replace_existing=True,
         )
         logger.info("Added weekly job: delete_old_job_executions")
+
+        scheduler.add_job(
+            delete_rejected_entries,
+            trigger=CronTrigger(day_of_week="mon", hour="01", minute="00"),
+            id="delete old rejected entries",
+            max_instances=1,
+            replace_existing=True,
+        )
+        logger.info("Added weekly job: delete_rejected_entries")
 
         try:
             logger.info("Starting scheduler...")
