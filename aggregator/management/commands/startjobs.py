@@ -151,7 +151,7 @@ def research_as_feed() -> None:
 def as_news_dotcom_feed() -> None:
     """Function to be passed to a Django-APScheduler job"""
     logger.info("Parsing AnkylosingSpondylitisNews.com feed...")
-    parse_pubmed_feed(AS_NEWS_DOTCOM_FEED)
+    parse_google_alert_feed(AS_NEWS_DOTCOM_FEED)
 
 
 class Command(BaseCommand):
