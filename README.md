@@ -1,8 +1,6 @@
+![Spondy News](/static/imgs/logo-small.jpg)
 ![GitHub](https://img.shields.io/github/license/endlesstrax/spondy-news)
 ![Black](https://img.shields.io/badge/code%20style-black-000000.svg)
-
-
-![Spondy News](/static/imgs/logo-small.png)
 
 # Spondy News
 
