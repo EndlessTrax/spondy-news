@@ -14,4 +14,4 @@ publish_selected.short_description = "Publish the selected posts"
 class EntryAdmin(admin.ModelAdmin):
     list_display = ("pub_date", "title", "category", "is_featured", "is_published")
     actions = [publish_selected]
-    ordering = ('-pub_date',)
+    ordering = ("-pub_date",)

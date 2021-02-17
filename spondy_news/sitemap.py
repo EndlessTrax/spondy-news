@@ -3,7 +3,7 @@ from django.shortcuts import reverse
 
 
 class StaticPageSitemap(Sitemap):
-    changefreq = 'daily'
+    changefreq = "daily"
     priority = 0.5
 
     def items(self):

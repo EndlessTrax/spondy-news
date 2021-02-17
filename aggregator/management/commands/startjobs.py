@@ -100,7 +100,9 @@ def delete_rejected_entries() -> None:
     """Deletes old entries that were not marked is_published and used"""
     start_range = timezone.now() - timedelta(days=365)
     end_range = timezone.now() - timedelta(days=14)
-    to_be_deleted = Entry.objects.filter(is_published=False, pub_date__range=[start_range, end_range])
+    to_be_deleted = Entry.objects.filter(
+        is_published=False, pub_date__range=[start_range, end_range]
+    )
 
     for entry in to_be_deleted:
         try:
