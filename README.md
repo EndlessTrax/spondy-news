@@ -2,7 +2,7 @@
 ![Black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 
-![Spondy News](/static/imgs/logo.png)
+![Spondy News](/static/imgs/logo-small.png)
 
 # Spondy News
 
