@@ -2,6 +2,8 @@ from django.urls import reverse
 
 import pytest
 
+from spondy_news.feeds import LatestEntriesFeed
+
 
 @pytest.mark.django_db
 def test_admin_action_publish_selected(client, example_entry):
@@ -16,6 +18,13 @@ def test_sitemap_status_code(client):
     """Checks the response code of sitemap.xml """
     response = client.get("/sitemap.xml")
     assert response.status_code == 200
+
+
+def test_sitemap_content():
+    feed = LatestEntriesFeed()
+    assert feed.title == "Spondy News Feed"
+    assert feed.link == "https://spondy.news"
+    assert feed.description == "Published entries on Spondy News"
 
 
 def test_robots_txt_status_code(client):
