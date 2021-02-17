@@ -1,6 +1,9 @@
 ![GitHub](https://img.shields.io/github/license/endlesstrax/spondy-news)
 ![Black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
+
+![Spondy News](/static/imgs/logo.png)
+
 # Spondy News
 
 All the latest news, research, and events for those suffering with Axial Spondyloarthritis (axSpA).
