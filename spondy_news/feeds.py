@@ -19,5 +19,5 @@ class LatestEntriesFeed(Feed):
     def item_link(self, item):
         return item.link
 
-    def item_category(self, item):
-        return item.category
+    def item_categories(self, item):
+        return [item.category]
