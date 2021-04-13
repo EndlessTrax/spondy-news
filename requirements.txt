@@ -1,4 +1,4 @@
-Django==3.1.6
+Django==3.1.8
 django-apscheduler==0.5.1
 django-heroku==0.3.1
 feedparser==6.0.2
